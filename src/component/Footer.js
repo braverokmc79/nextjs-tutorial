@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>Copyright @ 코딩앙마. All right reserved.</div>
+        <div>Copyright @ 도그파크. All right reserved.</div>
     );
 };
 
