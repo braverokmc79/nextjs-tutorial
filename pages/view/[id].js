@@ -6,7 +6,7 @@ import Item from './../../src/component/Item';
 import { Loader } from 'semantic-ui-react';
 import Head from 'next/head';
 
-const Post = ({ item }) => {
+const Post = ({ item, name }) => {
     // const router = useRouter()
     // const { id } = router.query;
     // const [item, setItem] = useState({});
@@ -54,6 +54,7 @@ const Post = ({ item }) => {
                         <title>{item[0].name}</title>
                         <meta name="description" content={item[0].bred_for}></meta>
                     </Head>
+                    {name} 환경 입니다.
                     <Item item={item[0]} />
                 </>
             }
@@ -63,6 +64,7 @@ const Post = ({ item }) => {
 
 export default Post;
 
+//nodejs 환경
 export async function getServerSideProps(context) {
     const id = context.params.id
     const API_URL = `https://api.thedogapi.com/v1/breeds/search?name=${id}`;
@@ -73,7 +75,8 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            item: data
+            item: data,
+            name: process.env.name
         }
     }
 }

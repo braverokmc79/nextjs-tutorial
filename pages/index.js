@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
 import Head from 'next/head'
 import Image from 'next/image'
@@ -12,13 +13,17 @@ export default function Home() {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  //const API_URL = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
+  //const API_URL = "http://  -api.herokuapp.com/api/v1/products.json?brand=maybelline";
   //thedogapi.com api 사용
   //https://docs.thedogapi.com/api-reference/breeds/breeds-list
-  const API_URL = "https://api.thedogapi.com/v1/breeds";
+  //const API_URL = "https://api.thedogapi.com/v1/breeds";
+  const API_URL = process.env.NEXT_PUBLIC_DOG_API_URL;
+  const ENV = process.env.NEXT_PUBLIC_NAME;
   const API_KEY = ApiKey;
+  console.log("프젝트환경 : ", ENV, " , API_URL : ", API_URL);
 
   function getData() {
+
     axios.get(API_URL, {
       headers: { 'x-api-key': API_KEY }
     }).then(res => {
