@@ -9,6 +9,8 @@ const Gnb = () => {
         activeItem = "home";
     } else if (router.pathname === "/about") {
         activeItem = "about";
+    } else if (router.pathname === "/cosmetics") {
+        activeItem = "cosmetics";
     }
 
     function goLink(e, data) {
@@ -16,20 +18,25 @@ const Gnb = () => {
             router.push("/");
         } else if (data.name === "about") {
             router.push("/about");
+
+        } else if (data.name === "cosmetics") {
+            router.push("/cosmetics");
         }
     }
+
 
 
     return (
         <Menu inverted>
             <Menu.Item name='home' active={activeItem === 'home'} onClick={goLink} />
             <Menu.Item name='about' active={activeItem === 'about'} onClick={goLink} />
-
             <Menu.Item name='Contact Us' active={activeItem === 'contact'}
                 onClick={() => {
                     router.push("/contact");
                 }}
             />
+
+            <Menu.Item name='cosmetics' active={activeItem === 'cosmetics'} onClick={goLink} />
         </Menu>
 
     );

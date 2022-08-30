@@ -9,32 +9,7 @@ import { Header, Divider, Loader } from 'semantic-ui-react';
 import ApiKey from '../ApiKey.js';
 
 
-export default function Home() {
-  const [list, setList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  //const API_URL = "http://  -api.herokuapp.com/api/v1/products.json?brand=maybelline";
-  //thedogapi.com api 사용
-  //https://docs.thedogapi.com/api-reference/breeds/breeds-list
-  //const API_URL = "https://api.thedogapi.com/v1/breeds";
-  const API_URL = process.env.NEXT_PUBLIC_DOG_API_URL;
-  const ENV = process.env.NEXT_PUBLIC_NAME;
-  const API_KEY = ApiKey;
-  console.log("프젝트환경 : ", ENV, " , API_URL : ", API_URL);
-
-  function getData() {
-
-    axios.get(API_URL, {
-      headers: { 'x-api-key': API_KEY }
-    }).then(res => {
-      setList(res.data);
-      setIsLoading(false);
-    });
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
+export default function Home({ list }) {
 
 
   return (
@@ -44,30 +19,42 @@ export default function Home() {
         <meta name="description" content='도그 파크 홈입니다.' ></meta>
       </Head>
 
-      {isLoading &&
-        <div style={{ padding: "300px 0" }}>
-          <Loader inline="centered" active>Loading</Loader>
-        </div>
-      }
+      <>
+        <Header as="h3" style={{ paddingTop: 40, marginBottom: 40 }}>VIP 분양</Header>
+        <Divider />
+        <ItemList list={list.slice(0, 12)} />
 
-      {!isLoading &&
-        <>
-          <Header as="h3" style={{ paddingTop: 40, marginBottom: 40 }}>VIP 분양</Header>
-          <Divider />
-          <ItemList list={list.slice(0, 12)} />
-
-          <Header as="h3" style={{ paddingTop: 80, marginBottom: 40 }}>베스트 분양</Header>
-          <Divider />
-          <ItemList list={list.slice(12, 24)} />
+        <Header as="h3" style={{ paddingTop: 80, marginBottom: 40 }}>베스트 분양</Header>
+        <Divider />
+        <ItemList list={list.slice(12, 24)} />
 
 
-          <Header as="h3" style={{ paddingTop: 80, marginBottom: 40 }}>실시간 분양</Header>
-          <Divider />
-          <ItemList list={list.slice(24, 60)} />
-        </>
-      }
-
+        <Header as="h3" style={{ paddingTop: 80, marginBottom: 40 }}>실시간 분양</Header>
+        <Divider />
+        <ItemList list={list.slice(24, 60)} />
+      </>
 
     </div>
   )
 }
+
+
+//nodejs 환경
+export async function getServerSideProps(context) {
+  const API_URL = process.env.NEXT_PUBLIC_DOG_API_URL;
+  const API_KEY = ApiKey;
+
+  const res = await axios.get(API_URL, {
+    headers: { 'x-api-key': API_KEY, Authorization: `token ${API_KEY}` }
+  });
+  const data = res.data;
+
+  return {
+    props: {
+      list: data,
+      name: process.env.name
+    }
+  }
+}
+
+

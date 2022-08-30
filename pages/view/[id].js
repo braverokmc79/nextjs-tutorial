@@ -54,7 +54,7 @@ const Post = ({ item, name }) => {
                         <title>{item[0].name}</title>
                         <meta name="description" content={item[0].bred_for}></meta>
                     </Head>
-                    {name} 환경 입니다.
+                    {/* {name} 환경 입니다. */}
                     <Item item={item[0]} />
                 </>
             }
