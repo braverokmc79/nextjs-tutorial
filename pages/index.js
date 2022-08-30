@@ -4,12 +4,13 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css'
 import ItemList from './../src/component/ItemList';
-import { Header, Divider } from 'semantic-ui-react';
+import { Header, Divider, Loader } from 'semantic-ui-react';
 import ApiKey from '../ApiKey.js';
 
 
 export default function Home() {
   const [list, setList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   //const API_URL = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
   //thedogapi.com api 사용
@@ -19,14 +20,11 @@ export default function Home() {
 
   function getData() {
     axios.get(API_URL, {
-      headers: {
-        'x-api-key': API_KEY
-      }
-    })
-      .then(res => {
-        // console.log("res.data :", res.data);
-        setList(res.data);
-      });
+      headers: { 'x-api-key': API_KEY }
+    }).then(res => {
+      setList(res.data);
+      setIsLoading(false);
+    });
   }
 
   useEffect(() => {
@@ -37,21 +35,33 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Home | 코딩앙마</title>
+        <title>Home | 강아지 분양소 | 도그파크</title>
+        <meta name="description" content='도그 파크 홈입니다.' ></meta>
       </Head>
 
-      <Header as="h3" style={{ paddingTop: 40, marginBottom: 40 }}>VIP 분양</Header>
-      <Divider />
-      <ItemList list={list.slice(0, 12)} />
+      {isLoading &&
+        <div style={{ padding: "300px 0" }}>
+          <Loader inline="centered" active>Loading</Loader>
+        </div>
+      }
 
-      <Header as="h3" style={{ paddingTop: 80, marginBottom: 40 }}>베스트 분양</Header>
-      <Divider />
-      <ItemList list={list.slice(12, 24)} />
+      {!isLoading &&
+        <>
+          <Header as="h3" style={{ paddingTop: 40, marginBottom: 40 }}>VIP 분양</Header>
+          <Divider />
+          <ItemList list={list.slice(0, 12)} />
+
+          <Header as="h3" style={{ paddingTop: 80, marginBottom: 40 }}>베스트 분양</Header>
+          <Divider />
+          <ItemList list={list.slice(12, 24)} />
 
 
-      <Header as="h3" style={{ paddingTop: 80, marginBottom: 40 }}>실시간 분양</Header>
-      <Divider />
-      <ItemList list={list.slice(24, 60)} />
+          <Header as="h3" style={{ paddingTop: 80, marginBottom: 40 }}>실시간 분양</Header>
+          <Divider />
+          <ItemList list={list.slice(24, 60)} />
+        </>
+      }
+
 
     </div>
   )

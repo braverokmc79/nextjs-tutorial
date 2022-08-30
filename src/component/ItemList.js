@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import styles from "./ItemList.module.css";
 import Link from 'next/link'
-import { useState } from 'react';
 
 const ItemList = ({ list }) => {
 
@@ -15,7 +14,7 @@ const ItemList = ({ list }) => {
             return null;
         }
     }
-
+    
     return (
         <div>
             {/* divided */}
@@ -25,8 +24,7 @@ const ItemList = ({ list }) => {
                     {list.map((item) => (
                         <Grid.Column key={item.id} alt={item.name}>
 
-
-                            <Link href={`/view/${item.name}`}>
+                            <Link href="/view/[id]" as={`/view/${item.name}`}>
                                 <a>
                                     <div className={styles.wrap}>
                                         {/* <img src={item.image_link} alt={item.name} className={styles.img_item} /> */}

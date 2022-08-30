@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }) {
     <div style={{ width: 1000, margin: " 0 auto" }}>
       <Top />
       <Component {...pageProps} />
+
       <Footer />
     </div>
 
