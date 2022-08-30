@@ -11,6 +11,8 @@ const Gnb = () => {
         activeItem = "about";
     } else if (router.pathname === "/cosmetics") {
         activeItem = "cosmetics";
+    } else if (router.pathname === "/admin") {
+        activeItem = "admin";
     }
 
     function goLink(e, data) {
@@ -21,6 +23,8 @@ const Gnb = () => {
 
         } else if (data.name === "cosmetics") {
             router.push("/cosmetics");
+        } else if (data.name === "admin") {
+            router.push("/admin");
         }
     }
 
@@ -37,6 +41,8 @@ const Gnb = () => {
             />
 
             <Menu.Item name='cosmetics' active={activeItem === 'cosmetics'} onClick={goLink} />
+
+            <Menu.Item name='admin' active={activeItem === 'admin'} onClick={goLink} />
         </Menu>
 
     );
