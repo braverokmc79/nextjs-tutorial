@@ -12,7 +12,6 @@ import { Header, Divider, Loader } from 'semantic-ui-react';
  */
 export default function Cosmetics({ list }) {
 
-
     console.log(list);
 
     return (
