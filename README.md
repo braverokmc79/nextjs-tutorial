@@ -1,26 +1,26 @@
-## Next js °­ÁÂ [ÄÚµù¾Ó¸¶]
+## Next js ê°•ì¢Œ [ì½”ë”©ì•™ë§ˆ]
 
-- 1.¼Ò°³, ÆäÀÌÁö ·¹ÀÌ¾Æ¿ô (Intro, Page layout)
+- 1.ì†Œê°œ, í˜ì´ì§€ ë ˆì´ì•„ì›ƒ (Intro, Page layout)
 
 - 2.Dynamic Routes, next/link
 
-- 3.¼­¹ö»çÀÌµå ·»´õ¸µ (Server-side Rendering/SSR/Dynamic Rendering)
+- 3.ì„œë²„ì‚¬ì´ë“œ ë Œë”ë§ (Server-side Rendering/SSR/Dynamic Rendering)
 
-- 4.¿¡·¯ ÆäÀÌÁö, È¯°æ º¯¼ö (Custom Error Page, Environment Variables)
+- 4.ì—ëŸ¬ í˜ì´ì§€, í™˜ê²½ ë³€ìˆ˜ (Custom Error Page, Environment Variables)
 
-- 5.Á¤Àû »ı¼º(Static Generation) - getStaticProps, getStaticPaths
+- 5.ì •ì  ìƒì„±(Static Generation) - getStaticProps, getStaticPaths
 
 - 6.isFallback, getStaticPaths
 
-- 7.API Routes, ·Î±×ÀÎ ±¸Çö
+- 7.API Routes, ë¡œê·¸ì¸ êµ¬í˜„
 
 
 
-[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages)·Î ºÎÆ®½ºÆ®·¦µÈ [Next.js](https://nextjs.org/) ÇÁ·ÎÁ§Æ®ÀÔ´Ï´Ù. /create-next-app).
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages)ë¡œ ë¶€íŠ¸ìŠ¤íŠ¸ë©ëœ [Next.js](https://nextjs.org/) í”„ë¡œì íŠ¸ì…ë‹ˆë‹¤. /create-next-app).
 
-## ½ÃÀÛÇÏ±â
+## ì‹œì‘í•˜ê¸°
 
-¸ÕÀú °³¹ß ¼­¹ö¸¦ ½ÇÇàÇÕ´Ï´Ù.
+ë¨¼ì € ê°œë°œ ì„œë²„ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
 
 ```bash
 npm run dev
@@ -28,25 +28,25 @@ npm run dev
 yarn dev
 ```
 
-ºê¶ó¿ìÀú¿¡¼­ [http://localhost:3000](http://localhost:3000)À» ¿­¾î °á°ú¸¦ È®ÀÎÇÏ¼¼¿ä.
+ë¸Œë¼ìš°ì €ì—ì„œ [http://localhost:3000](http://localhost:3000)ì„ ì—´ì–´ ê²°ê³¼ë¥¼ í™•ì¸í•˜ì„¸ìš”.
 
-'pages/index.js'¸¦ ¼öÁ¤ÇÏ¿© ÆäÀÌÁö ÆíÁıÀ» ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù. ÆÄÀÏÀ» ÆíÁıÇÏ¸é ÆäÀÌÁö°¡ ÀÚµ¿À¸·Î ¾÷µ¥ÀÌÆ®µË´Ï´Ù.
+'pages/index.js'ë¥¼ ìˆ˜ì •í•˜ì—¬ í˜ì´ì§€ í¸ì§‘ì„ ì‹œì‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤. íŒŒì¼ì„ í¸ì§‘í•˜ë©´ í˜ì´ì§€ê°€ ìë™ìœ¼ë¡œ ì—…ë°ì´íŠ¸ë©ë‹ˆë‹¤.
 
-[API °æ·Î](https://nextjs.org/docs/api-routes/introduction)´Â [http://localhost:3000/api/hello](http://localhost:3000/api/hello)¿¡¼­ Á¢±ÙÇÒ ¼ö ÀÖ½À´Ï´Ù. ). ÀÌ ³¡Á¡Àº `pages/api/hello.js`¿¡¼­ ÆíÁıÇÒ ¼ö ÀÖ½À´Ï´Ù.
+[API ê²½ë¡œ](https://nextjs.org/docs/api-routes/introduction)ëŠ” [http://localhost:3000/api/hello](http://localhost:3000/api/hello)ì—ì„œ ì ‘ê·¼í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤. ). ì´ ëì ì€ `pages/api/hello.js`ì—ì„œ í¸ì§‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
 
-`pages/api` µğ·ºÅä¸®´Â `/api/*`¿¡ ¸ÅÇÎµË´Ï´Ù. ÀÌ µğ·ºÅä¸®ÀÇ ÆÄÀÏÀº React ÆäÀÌÁö°¡ ¾Æ´Ñ [API route](https://nextjs.org/docs/api-routes/introduction)·Î Ãë±ŞµË´Ï´Ù.
+`pages/api` ë””ë ‰í† ë¦¬ëŠ” `/api/*`ì— ë§¤í•‘ë©ë‹ˆë‹¤. ì´ ë””ë ‰í† ë¦¬ì˜ íŒŒì¼ì€ React í˜ì´ì§€ê°€ ì•„ë‹Œ [API route](https://nextjs.org/docs/api-routes/introduction)ë¡œ ì·¨ê¸‰ë©ë‹ˆë‹¤.
 
-## ´õ ¾Ë¾Æº¸±â
+## ë” ì•Œì•„ë³´ê¸°
 
-Next.js¿¡ ´ëÇØ ÀÚ¼¼È÷ ¾Ë¾Æº¸·Á¸é ´ÙÀ½ ¸®¼Ò½º¸¦ »ìÆìº¸¼¼¿ä.
+Next.jsì— ëŒ€í•´ ìì„¸íˆ ì•Œì•„ë³´ë ¤ë©´ ë‹¤ìŒ ë¦¬ì†ŒìŠ¤ë¥¼ ì‚´í´ë³´ì„¸ìš”.
 
-- [Next.js ¹®¼­](https://nextjs.org/docs) - Next.js ±â´É ¹× API¿¡ ´ëÇØ ¾Ë¾Æº¸¼¼¿ä.
-- [Learn Next.js](https://nextjs.org/learn) - ´ëÈ­Çü Next.js Æ©Åä¸®¾ó.
+- [Next.js ë¬¸ì„œ](https://nextjs.org/docs) - Next.js ê¸°ëŠ¥ ë° APIì— ëŒ€í•´ ì•Œì•„ë³´ì„¸ìš”.
+- [Learn Next.js](https://nextjs.org/learn) - ëŒ€í™”í˜• Next.js íŠœí† ë¦¬ì–¼.
 
-[Next.js GitHub ÀúÀå¼Ò](https://github.com/vercel/next.js/)¸¦ È®ÀÎÇÒ ¼ö ÀÖ½À´Ï´Ù. ÇÇµå¹é°ú ±â¿©¸¦ È¯¿µÇÕ´Ï´Ù!
+[Next.js GitHub ì €ì¥ì†Œ](https://github.com/vercel/next.js/)ë¥¼ í™•ì¸í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤. í”¼ë“œë°±ê³¼ ê¸°ì—¬ë¥¼ í™˜ì˜í•©ë‹ˆë‹¤!
 
-## Vercel¿¡ ¹èÆ÷
+## Vercelì— ë°°í¬
 
-Next.js ¾ÛÀ» ¹èÆ÷ÇÏ´Â °¡Àå ½¬¿î ¹æ¹ıÀº [Vercel ÇÃ·§Æû](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app -readme) Next.js Á¦ÀÛÀÚ·ÎºÎÅÍ.
+Next.js ì•±ì„ ë°°í¬í•˜ëŠ” ê°€ì¥ ì‰¬ìš´ ë°©ë²•ì€ [Vercel í”Œë«í¼](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app -readme) Next.js ì œì‘ìë¡œë¶€í„°.
 
-ÀÚ¼¼ÇÑ ³»¿ëÀº [Next.js ¹èÆ÷ ¹®¼­](https://nextjs.org/docs/deployment)¸¦ È®ÀÎÇÏ¼¼¿ä.
+ìì„¸í•œ ë‚´ìš©ì€ [Next.js ë°°í¬ ë¬¸ì„œ](https://nextjs.org/docs/deployment)ë¥¼ í™•ì¸í•˜ì„¸ìš”.
